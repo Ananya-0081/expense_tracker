@@ -1,91 +1,214 @@
 {% extends "base.html" %}
 
-{% block title %}Spendly — Track Every Rupee{% endblock %}
+{% block title %}TrackIt — Track smarter. Spend better.{% endblock %}
 
 {% block content %}
 
+<!-- ============================================================ -->
+<!-- Hero                                                          -->
+<!-- ============================================================ -->
 <section class="hero">
-    <div class="hero-inner">
-        <div class="hero-badge">Personal Finance Tracker</div>
+    <div class="hero-copy">
+        <span class="hero-badge">
+            <i data-lucide="sparkles"></i> Personal finance, reimagined
+        </span>
         <h1 class="hero-title">
-            Know where your<br>
-            <em>money goes</em>
+            Track every<br>
+            rupee with<br>
+            <em>confidence.</em>
         </h1>
         <p class="hero-subtitle">
-            Log expenses, understand your spending patterns,
-            and take control of your financial life —
-            one transaction at a time.
+            Track expenses, analyze spending habits, create monthly budgets,
+            and gain complete control over your finances.
         </p>
         <div class="hero-actions">
-            <a href="{{ url_for('register') }}" class="btn-primary">Start tracking free</a>
-            <a href="{{ url_for('login') }}" class="btn-ghost">Sign in</a>
+            <a href="{{ url_for('register') }}" class="btn btn-primary">
+                Get Started <i data-lucide="arrow-right"></i>
+            </a>
+            <a href="#dashboard" class="btn btn-secondary">
+                <i data-lucide="play"></i> View Demo
+            </a>
+        </div>
+        <div class="hero-trust">
+            <i data-lucide="shield-check"></i>
+            Bank-grade security · No credit card required
         </div>
     </div>
-    <div class="hero-visual">
-        <div class="mock-card">
-            <div class="mock-card-header">
-                <span class="mock-label">March 2026</span>
-                <span class="mock-total">₹12,450</span>
+
+    <!-- Dashboard mockup -->
+    <div class="hero-visual" id="dashboard">
+        <div class="dashboard">
+            <div class="dash-topbar">
+                <span class="dash-title">Overview</span>
+                <span class="dash-dots"><span></span><span></span><span></span></span>
             </div>
-            <div class="mock-bars">
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Bills</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar" style="width: 72%"></div>
-                    </div>
-                    <span class="mock-amt">₹4,500</span>
+
+            <!-- KPI tiles -->
+            <div class="stat-grid">
+                <div class="stat-tile is-primary">
+                    <span class="stat-tile-label"><i data-lucide="wallet"></i> Total Balance</span>
+                    <span class="stat-tile-value">₹1,84,200</span>
                 </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Food</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-2" style="width: 52%"></div>
-                    </div>
-                    <span class="mock-amt">₹3,200</span>
+                <div class="stat-tile">
+                    <span class="stat-tile-label"><i data-lucide="arrow-down-left"></i> Monthly Income</span>
+                    <span class="stat-tile-value">₹92,000</span>
                 </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Health</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-3" style="width: 33%"></div>
-                    </div>
-                    <span class="mock-amt">₹2,050</span>
+                <div class="stat-tile">
+                    <span class="stat-tile-label"><i data-lucide="arrow-up-right"></i> Monthly Expense</span>
+                    <span class="stat-tile-value">₹48,750</span>
                 </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Transport</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-4" style="width: 28%"></div>
+                <div class="stat-tile">
+                    <span class="stat-tile-label"><i data-lucide="piggy-bank"></i> Savings</span>
+                    <span class="stat-tile-value">₹43,250<small>+18%</small></span>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="dash-panels">
+                <div class="dash-panel">
+                    <div class="dash-panel-title">By Category</div>
+                    <div class="donut-wrap">
+                        <div class="donut" role="img" aria-label="Spending by category"></div>
+                        <div class="donut-legend">
+                            <span class="legend-item"><span class="legend-dot d-blue"></span> Bills</span>
+                            <span class="legend-item"><span class="legend-dot d-green"></span> Food</span>
+                            <span class="legend-item"><span class="legend-dot d-amber"></span> Travel</span>
+                            <span class="legend-item"><span class="legend-dot d-violet"></span> Other</span>
+                        </div>
                     </div>
-                    <span class="mock-amt">₹1,800</span>
+                </div>
+                <div class="dash-panel">
+                    <div class="dash-panel-title">Monthly Spending</div>
+                    <svg class="spark" viewBox="0 0 200 74" preserveAspectRatio="none" aria-label="Monthly spending trend">
+                        <defs>
+                            <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#2563EB" stop-opacity="0.22" />
+                                <stop offset="100%" stop-color="#2563EB" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+                        <path class="spark-area"
+                              d="M0,58 L28,50 L56,54 L84,36 L112,42 L140,24 L168,30 L200,14 L200,74 L0,74 Z" />
+                        <path class="spark-line"
+                              d="M0,58 L28,50 L56,54 L84,36 L112,42 L140,24 L168,30 L200,14" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Recent transactions -->
+            <div class="dash-tx">
+                <div class="dash-tx-title">Recent Transactions</div>
+                <div class="tx-row">
+                    <span class="tx-icon"><i data-lucide="zap"></i></span>
+                    <span class="tx-meta">
+                        <span class="tx-name">Electricity Bill</span>
+                        <span class="tx-sub">Bills · Today</span>
+                    </span>
+                    <span class="tx-amt is-neg">−₹2,400</span>
+                </div>
+                <div class="tx-row">
+                    <span class="tx-icon is-green"><i data-lucide="banknote"></i></span>
+                    <span class="tx-meta">
+                        <span class="tx-name">Salary Credit</span>
+                        <span class="tx-sub">Income · Yesterday</span>
+                    </span>
+                    <span class="tx-amt is-pos">+₹92,000</span>
+                </div>
+                <div class="tx-row">
+                    <span class="tx-icon"><i data-lucide="coffee"></i></span>
+                    <span class="tx-meta">
+                        <span class="tx-name">Cafe Coffee Day</span>
+                        <span class="tx-sub">Food · 2 days ago</span>
+                    </span>
+                    <span class="tx-amt is-neg">−₹480</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="features">
-    <div class="features-inner">
-        <div class="feature-card">
-            <div class="feature-icon">₹</div>
-            <h3 class="feature-title">Log expenses instantly</h3>
-            <p class="feature-body">Add any expense in seconds. Category, amount, date, description — all in one simple form.</p>
+<!-- ============================================================ -->
+<!-- Statistics strip                                              -->
+<!-- ============================================================ -->
+<section class="stats-strip">
+    <div class="stats-inner reveal">
+        <div class="stat-block">
+            <div class="stat-number" data-count="12" data-prefix="₹" data-suffix="L+">₹0</div>
+            <div class="stat-label">Money Tracked</div>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">◎</div>
-            <h3 class="feature-title">Understand your patterns</h3>
-            <p class="feature-body">See exactly where your money goes with category breakdowns and monthly summaries.</p>
+        <div class="stat-block">
+            <div class="stat-number" data-count="35" data-suffix="K+">0</div>
+            <div class="stat-label">Transactions</div>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">◷</div>
-            <h3 class="feature-title">Filter by time period</h3>
-            <p class="feature-body">View your spending for any date range — last week, last month, or a custom period.</p>
+        <div class="stat-block">
+            <div class="stat-number" data-count="95" data-suffix="%">0</div>
+            <div class="stat-label">Savings Goal Success</div>
+        </div>
+        <div class="stat-block">
+            <div class="stat-number" data-count="500" data-suffix="+">0</div>
+            <div class="stat-label">Monthly Reports</div>
         </div>
     </div>
 </section>
 
-<section class="cta-section">
-    <div class="cta-inner">
-        <h2 class="cta-title">Ready to take control?</h2>
-        <p class="cta-body">Join thousands of people who track their expenses with Spendly.</p>
-        <a href="{{ url_for('register') }}" class="btn-primary">Create free account</a>
+<!-- ============================================================ -->
+<!-- Features                                                      -->
+<!-- ============================================================ -->
+<section class="section" id="features">
+    <div class="section-head reveal">
+        <span class="eyebrow">Features</span>
+        <h2 class="section-title">Everything you need to master your money</h2>
+        <p class="section-subtitle">
+            A complete toolkit for tracking, planning, and growing your savings —
+            wrapped in a beautifully simple interface.
+        </p>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card reveal">
+            <div class="feature-ico"><i data-lucide="receipt-text"></i></div>
+            <h3 class="feature-title">Expense Tracking</h3>
+            <p class="feature-body">Log every transaction in seconds with categories, dates, and notes — all beautifully organized.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-ico"><i data-lucide="chart-pie"></i></div>
+            <h3 class="feature-title">Smart Analytics</h3>
+            <p class="feature-body">Understand your habits with category breakdowns, trends, and insights that actually make sense.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-ico"><i data-lucide="target"></i></div>
+            <h3 class="feature-title">Budget Planning</h3>
+            <p class="feature-body">Set monthly budgets per category and get gentle nudges before you overspend.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-ico"><i data-lucide="file-text"></i></div>
+            <h3 class="feature-title">Monthly Reports</h3>
+            <p class="feature-body">Automatic, elegant monthly summaries that show exactly where your money went.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-ico"><i data-lucide="bell-ring"></i></div>
+            <h3 class="feature-title">Bill Reminders</h3>
+            <p class="feature-body">Never miss a payment again with timely reminders for your recurring bills.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-ico"><i data-lucide="cloud-check"></i></div>
+            <h3 class="feature-title">Secure Cloud Backup</h3>
+            <p class="feature-body">Your data is encrypted and safely backed up, synced across every device you own.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CTA                                                           -->
+<!-- ============================================================ -->
+<section class="cta-wrap">
+    <div class="cta reveal">
+        <div class="cta-inner">
+            <h2 class="cta-title">Take control of your finances today.</h2>
+            <p class="cta-body">Join thousands who track smarter and spend better with TrackIt.</p>
+            <a href="{{ url_for('register') }}" class="btn btn-light">
+                Start Tracking Free <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
     </div>
 </section>
 
